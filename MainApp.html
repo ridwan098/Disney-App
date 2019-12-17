@@ -1,0 +1,1002 @@
+<!--Disney world needs an ID in the html so that you can use java script to add effects and stuff
+
+https://codepen.io/falldowngoboone/pen/zxRXjL
+
+picture1: https://static.pexels.com/photos/207962/pexels-photo-207962.jpeg
+
+picture2:
+
+the idea behind these pictures is that you provide the users 
+with suggested links to images. RIDWAN, CHOOSES THOSE THAT WORK!!! 
+ add opacity to nav2 
+ also, the navigation bar breaks when you press load
+
+-->
+
+
+  <!--Text to speeach
+       Large text
+       High Contrast-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="Disney App.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+
+    <!--##############################################**CSS Starts Here####################################-->
+    <style type  = "text/css">
+            .container{
+              margin-right: auto; /* 1 */
+              margin-left:  auto; /* 1 */
+              max-width: 324px; /* 2 */
+              padding-right: 20%; /* 3 */
+              padding-left:  20.5%; /* 3 */
+              padding-top:  9%;
+            }
+            
+            .dropbtn {
+                background-color: #d37570;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .li2 a {
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;   
+                margin-left: -0.4px; 
+            }
+
+            .fa{
+              font-size:28px; 
+              color:black;
+            }
+            
+            .we1:hover {
+              background-color:#c63d3d;          
+            }
+            .we2:hover {
+              background-color:#c6c13d;          
+            }
+            .we3:hover {
+              background-color:#3dc653;          
+            }
+            .we4:hover {
+              background-color:#3d78c6;          
+            }
+            .we5:hover {
+              background-color:#5d1e60;          
+            }
+
+            .li2:hover .fa{
+              color:white;             
+            }
+
+            .li2:hover b{
+              color:white;             
+            }            
+            
+
+          .nav2 {
+                
+                background-color: white;
+                opacity: 0.9;
+               /*margin-top:370px !important;*/
+            }
+            .li2{
+                font-size: 10.5px;
+            }
+
+            
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #924541;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f1f1f1;
+                min-width: 160px;
+                overflow: auto;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown a:hover {background-color: #ddd}
+
+            .show {display:block;}
+
+            .icon{
+                width: 15px;
+                height: 2px;
+                background-color: black;
+                margin: 3px 0;
+
+            }
+
+            .img1{
+                max-width: 80px;
+                margin-left:228px !important;
+                margin-top:-57px !important;
+                position:absolute;
+
+                
+            }
+
+            .nColor{
+                background:#c63d3d;
+            }
+
+            body{
+                background-image: url("Images/Iphone template.png");
+                background-repeat: no-repeat;               
+                background-size: 900px 900px;
+                background-position: 30px -70px;
+
+            }
+
+            @media only screen and (min-width: 1240px) {
+                body{
+                    background-image: url("Images/Iphone template.png");
+                    background-repeat: no-repeat;               
+                    background-size: 900px 900px;
+                    background-position: 50.5% -7.5%;
+
+                }
+            }
+
+
+            canvas {
+              background: white;
+            }
+
+            #paint-app {
+
+                margin-top: 0px !important;
+                margin-left: 0px;
+                margin-right: 0px;
+               /* You can change the width here just like this:
+               width: 200px;*/
+            }
+
+            /* For any shape tools that need a live preview */
+            .placeholder {
+              position:absolute;
+              z-index:999;
+            }
+            /*
+            #paint-app  button{
+                padding: 10px 15px 11px !important;                
+                font-size: 18px !important;
+                background-color: #57d6c7;
+                font-weight: bold;
+                text-shadow: 1px 1px #57D6C7;
+                color: #ffffff;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border: 1px solid #57D6C7;
+                cursor: pointer;
+                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+                -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+                -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+                text-transform: uppercase;
+
+            } */
+
+            /*Menu starts here*/
+            .MenuImg{
+                width:25px;
+                filter: invert(30%) grayscale(100%) brightness(70%) contrast(10);
+                position:relative;
+                top:7px;
+               
+            }
+
+            .MenuImg1{
+                width:50px;
+                margin-right: -24px;
+                position: relative;
+                right:15px;
+                filter: invert(30%) grayscale(100%) brightness(70%) contrast(10);
+                position:relative;
+                top:7px;
+    
+            }
+
+            .MenuImg2{
+                width:25px;
+                position:relative;
+                top:7px;
+            }
+
+            .about1{
+                text-align: center;
+
+            }
+            
+            .d1{
+                position: relative;
+                margin-top:-10px;
+            }
+
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 9px;
+              height: 12px;
+            }
+
+            .switch input {display:none;}
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 10px;
+              width: 10px;
+              left: 1px;
+              bottom: 1px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+              box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+              -webkit-transform: translateX(13px);
+              -ms-transform: translateX(13px);
+              transform: translateX(13px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 17px;
+            }
+
+            .slider.round:before {
+              border-radius: 50%;
+            }
+
+            #paint-app span:after{
+              content:"\a";
+              white-space: pre;
+
+            }
+
+            #paint-app span{
+              color: white;
+              margin-left: 15px;
+            }
+
+            form{
+              color:white;
+              margin-left: 15px;
+            }
+
+            .toolbar div{
+              color: white;
+              margin-left: 15px;
+            }
+
+            .toolbar a{
+              color: grey;
+              margin-left: 15px;
+            }
+
+            .toolbar a:hover{
+              color: lightblue;
+              margin-left: 15px;
+            }
+
+            
+            #paint-app  button{
+                background-color: #F36C8C;
+                cursor: pointer;
+                margin-left: 110px;
+                text-transform: uppercase;
+            }
+
+            #paint-app  button:hover{
+                background-color: #F36C8C;
+                color: white;
+            }
+/*
+             #paint-app input{
+                width: 80%;
+             }
+*/           
+            .toolbar{
+              background-color: brown;
+              margin-right: 3px;
+            }
+             #paint-app input[type = text]{
+                height: 20px;
+                width: 110px;
+                background-color: #64B5F6;
+                outline: none;
+                border-radius: 5px 50px 50px 5px;
+                border: 0;
+                text-indent: 15px;
+                color: #fff;
+                font-weight: 400;
+                font-size: 15px;
+                padding: 0 60px 0 0;
+             }
+            #paint-app input[type = text]::placeholder{               
+                color: #fff;
+             }
+
+             @media only screen and (min-width: 1240px) { 
+              .nav2{ 
+                position: absolute; 
+                bottom: 128px !important; 
+              }
+            }
+
+          @media only screen and (min-width: 1920px) { 
+              .nav2{ 
+                position: absolute; 
+                bottom: 193px !important; 
+              }
+            }
+
+/*
+            @media only screen and (max-width: 960px) { 
+              .nav2{ 
+                position: absolute; 
+                bottom: 259px !important; 
+              }
+            }
+*/
+           
+          @media only screen and (min-width: 1440px) {
+              .container{
+              margin-right: auto; /* 1 */
+              margin-left:  auto; /* 1 */
+              max-width: 324px; /* 2 */
+              padding-right: 20%; /* 3 */
+              padding-left:  20.5%; /* 3 */
+              padding-top:  9%;
+            }
+          }
+
+          @media only screen and (min-width: 1440px) { 
+              .nav2{ 
+                position: absolute; 
+                bottom: 128px !important; 
+              }
+            }
+                 
+
+
+    </style>
+</head>
+<body onload = 'myFunction()'>    
+  <div class = "container">
+
+             <a href = "Disney App.html"><span >&#10094; <small>Home</small></span></a>
+
+             <br />
+
+
+            <div class="w3-card-4 w3-margin w3-white" style='color:rgb(102, 37, 42)'>
+                
+                <h5 id='h5' style = "text-align: center">Colour A Mouse <span class="w3-opacity"><br />February 25, 2018</span></h5>
+            </div>
+
+            <div class = "nColor">
+                <div class="dropdown">                
+                <button onclick="myFunction()" class="dropbtn"><div class = "icon"></div><div class = "icon"></div><div class = "icon"></div></button>
+                  <div id="myDropdown" class="dropdown-content">
+
+                    <!--The text the says "Off" should change based on the toggle-->
+                   Darkmode <span>Off</span>     
+                  <label class="switch">
+                     <input type="checkbox">                          
+                    <span class="slider round"></span>
+                  </label>          
+              
+
+
+                    <a href = "#language"><img src = "Images/English.png" alt = "English" class = "MenuImg2">English</a>
+                    <a href="#Account" class = "d1"><img src = "Images/Account.png" alt = "Account" class = "MenuImg">My Account</a>
+                    <a href="#Tickets" class = "d1"><img src = "Images/Ticket.png" alt = "Tickets" class = "MenuImg">Ticket</a>
+                    <a href="#Reminders" class = "d1"><img src = "Images/Reminders.png" alt = "Reminders" class = "MenuImg">Reminders</a>
+                    <a href="#Merchandise" class = "d1"><img src = "Images/Merchandise.png" alt = "Merchandise" class = "MenuImg">Merchandise</a>
+                    <a href="#Food" class = "d1"><img src = "Images/Food.png" alt = "Food" class = "MenuImg">Food</a>
+                    <a href="#Text-To-Speech" class = "d1"><img src = "Images/Text-To-Speech.png" alt = "Text-To-Speech" class = "MenuImg1">Text-To-Speech</a>
+                    <a href="#Voice-To-Text" class = "d1"><img src = "Images/Voice-To-Text.png" alt = "Voice-To-Text" class = "MenuImg">Voice-To-Text/Translator</a>
+                    <a href="#about" class = "about1">About Us</a>                   
+                  </div>
+                  <b style = "margin-left: 85px">Home</b>
+                  <img src = "Images/Disney Logo.png" alt = "Disney World Logo" class = "img1">
+                
+                </div>
+            </div>
+
+
+
+            <!--The canvas is here-->
+            <div id="paint-app" style="font-size: 17px">
+              
+            </div>
+
+                               
+
+            
+            <!--##############################Bottom Navigation  Bar#####################################-->
+            <ul class='nav2' style="position: absolute; bottom:188px;" >
+                <li class='li2 we1'>
+                    <a href="MainApp.html"><i class="fa fa-home"></i><br /><b>Home</b></a>
+                </li>
+                <li class='li2 we2'>
+                   <a href="RidesPage.html"><i class="fa fa-rocket"></i><br /><b>Rides</b></a>
+                </li>
+                <li class='li2 we3'>
+                    <a href="ReminderPage.html"><i class="  fa fa-history"></i><br /><b>Reminder</b></a>
+                </li>
+
+
+                <li class='li2 we4'>
+                    <a href="MessagesPage.html"><i class="  fa fa-commenting-o"></i><br /><b>Messages</b></a>
+                </li>
+
+
+                <li class='li2 we5'>
+                    <a href="MapPage.html"><i class="fa fa-map-marker"></i><br /><section><b>Map</b></section></a>
+                </li>
+            </ul>   
+    </div>   
+  
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+/*######################################    Toggle for the menu*        ######################*/
+
+
+
+/*######################################  CANVAS STARTS HERE            ##############################*/
+
+
+
+function createPaint(parent) {  //322 & 300
+  var canvas = elt('canvas', {width: 322, height: 200});
+  var cx = canvas.getContext('2d');
+  var toolbar = elt('div', {class: 'toolbar'});
+  
+  // calls the every function in controls, passing in context,
+  // then appending the returned results to the toolbar
+  for (var name in controls)
+    toolbar.appendChild(controls[name](cx));
+  
+  var panel = elt('div', {class: 'picturepanel'}, canvas);
+  parent.appendChild(elt('div', null, panel, toolbar));
+}
+
+/************************************************************************
+ * helper functions
+ ***********************************************************************/
+
+// creates an element with a name and object (attributes)
+// appends all further arguments it gets as child nodes
+// string arguments create text nodes
+// ex: elt('div', {class: 'foo'}, 'Hello, world!');
+function elt(name, attributes) {
+  var node = document.createElement(name);
+  if (attributes) {
+    for (var attr in attributes)
+      if (attributes.hasOwnProperty(attr))
+        node.setAttribute(attr, attributes[attr]);
+  }
+  for (var i = 2; i < arguments.length; i++) {
+    var child = arguments[i];
+    
+    // if this argument is a string, create a text node
+    if (typeof child == 'string')
+      child = document.createTextNode(child);
+    node.appendChild(child);
+  }
+  return node;  
+}
+
+// figures out canvas relative coordinates for accurate functionality
+function relativePos(event, element) {
+  var rect = element.getBoundingClientRect();
+  return {x: Math.floor(event.clientX - rect.left),
+          y: Math.floor(event.clientY - rect.top)};
+}
+
+// registers and unregisters listeners for tools
+function trackDrag(onMove, onEnd) {
+  function end(event) {
+    removeEventListener('mousemove', onMove);
+    removeEventListener('mouseup', end);
+    if (onEnd)
+      onEnd(event);
+  }
+  addEventListener('mousemove', onMove);
+  addEventListener('mouseup', end);
+}
+
+// loads an image from a URL and replaces the contents of the canvas
+function loadImageURL(cx, url)  {
+  var image = document.createElement('img');
+  image.addEventListener('load', function() {
+    document.getElementById("paint-app").style.maxHeight = "100px";
+    var color = cx.fillStyle, size = cx.lineWidth;
+    image.width = cx.canvas.width;
+    image.height = cx.canvas.height;
+    cx.drawImage(image, 0, 0);
+    cx.fillStyle = color;
+    cx.strokeStyle = color;
+    cx.lineWidth = size;
+  });
+  image.src = url;
+  
+}
+
+// used by tools.Spray
+// randomly positions dots
+function randomPointInRadius(radius) {
+  for (;;) {
+    var x = Math.random() * 2 - 1;
+    var y = Math.random() * 2 - 1;
+    // uses the Pythagorean theorem to test if a point is inside a circle
+    if (x * x + y * y <= 1)
+      return {x: x * radius, y: y * radius};
+  }
+}
+
+/************************************************************************
+ * controls
+ ***********************************************************************/
+
+// holds static methods to initialize the various controls;
+// Object.create() is used to create a truly empty object
+var controls = Object.create(null);
+
+controls.tool = function(cx) {
+  var select = elt('select');
+  
+  // populate the tools
+  for (var name in tools)
+    select.appendChild(elt('option', null, name));
+  
+  // calls the particular method associated with the current tool
+  cx.canvas.addEventListener('mousedown', function(event) {
+    
+    // is the left mouse button being pressed?
+    if (event.which == 1) {
+      
+      // the event needs to be passed to the method to determine
+      // what the mouse is doing and where it is
+      tools[select.value](event, cx);
+      // don't select when user is clicking and dragging
+      event.preventDefault();
+    }
+  });  
+  return elt('span', null, 'Tool: ', select);
+};
+
+// color module
+controls.color = function(cx) {
+  var input = elt('input', {type: 'color'});
+  
+  // on change, set the new color style for fill and stroke
+  input.addEventListener('change', function() {
+    cx.fillStyle = input.value;
+    cx.strokeStyle = input.value;
+  });
+  return elt('span', null, 'Color: ', input);
+  
+};
+
+// brush size module
+controls.brushSize = function(cx) {
+  var select = elt('select');
+  
+  // various brush sizes
+  var sizes = [1, 2, 3, 5, 8, 12, 25, 35, 50, 75, 100];
+  
+  // build up a select group of size options
+  sizes.forEach(function(size) {
+    select.appendChild(elt('option', {value: size}, size + ' pixels'));
+  });
+  
+  // on change, set the new stroke thickness
+  select.addEventListener('change', function() {
+    cx.lineWidth = select.value;
+  });
+  return elt('span', null, 'Brush size: ', select);
+};
+
+// save
+controls.save = function(cx) {
+  // MUST open in a new window because of iframe security stuff
+  var link = elt('a', {href: '/', target: '_blank'}, 'Save');
+  function update() {
+    try {
+      link.href = cx.canvas.toDataURL();
+    } catch(e) {
+      // some browsers choke on big data URLs
+      
+      // also, if the server response doesn't include a header that tells the browser it
+      // can be used on other domains, the script won't be able to look at it;
+      // this is in order to prevent private information from leaking to a script;
+      // pixel data, data URL or otherwise, cannot be extracted from a "tainted canvas"
+      // and a SecurityError is thrown
+      if (e instanceof SecurityError)
+        link.href = 'javascript:alert(' + 
+          JSON.stringify('Can\'t save: ' + e.toString()) + ')';
+      else
+        window.alert("Nope.");
+        throw e;
+    }
+  }
+  link.addEventListener('mouseover', update);
+  link.addEventListener('focus', update);
+  return link;
+};
+
+// open a file
+controls.openFile = function(cx) {
+  var input = elt('input', {type: 'file'});
+  input.addEventListener('change', function() {
+    if (input.files.length == 0) return;
+    var reader = new FileReader();
+    reader.addEventListener('load', function() {
+      loadImageURL(cx, reader.result);
+    });
+    reader.readAsDataURL(input.files[0]);
+  });
+  return elt('div', null, 'Open file: ', input);
+};
+
+// open a URL
+controls.openURL = function(cx) {
+  var input = elt('input', {type: 'text'});
+  var form = elt('form', null, 'Open URL: ', input, 
+                 elt('button', {type: 'submit'}, 'load'));
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    loadImageURL(cx, form.querySelector('input').value);
+  });
+  return form;
+};
+
+/************************************************************************
+ * tools
+ ***********************************************************************/
+
+// drawing tools
+var tools = Object.create(null);
+
+// line tool
+// onEnd is for the erase function, which uses it to reset
+    // the globalCompositeOperation to source-over
+tools.Line = function(event, cx, onEnd) {
+  cx.lineCap = 'round';
+  
+  // mouse position relative to the canvas
+  var pos = relativePos(event, cx.canvas);
+  trackDrag(function(event) {
+    cx.beginPath();
+    
+    // move to current mouse position
+    cx.moveTo(pos.x, pos.y);
+    
+    // update mouse position
+    pos = relativePos(event, cx.canvas);
+    
+    // line to updated mouse position
+    cx.lineTo(pos.x, pos.y);
+    
+    // stroke the line
+    cx.stroke();
+  }, onEnd);
+};
+
+// erase tool
+tools.Erase = function(event, cx) {
+  
+  // globalCompositeOperation determines how drawing operations
+  // on a canvas affect what's already there
+  // 'destination-out' makes pixels transparent, 'erasing' them
+  // NOTE: this has been deprecated
+  cx.globalCompositeOperation = 'destination-out';
+  tools.Line(event, cx, function() {
+    cx.globalCompositeOperation = 'source-over';
+  });
+};
+
+// text tool
+tools.Text = function(event, cx) {
+  var text = prompt('Text:', '');
+  if (text) {
+    var pos = relativePos(event, cx.canvas);
+    // for simplicity, text size is brush size, locked to sans-serif
+    cx.font = Math.max(7, cx.lineWidth) + 'px sans-serif';
+    cx.fillText(text, pos.x, pos.y);
+  }
+}
+
+// spray paint tool
+tools.Spray = function(event, cx) {
+  var radius = cx.lineWidth / 2;
+  var area = radius * radius * Math.PI;
+  var dotsPerTick = Math.ceil(area / 30);
+  
+  var currentPos = relativePos(event, cx.canvas);
+  var spray = setInterval(function() {
+    for (var i = 0; i < dotsPerTick; i++) {
+      var offset = randomPointInRadius(radius);
+      cx.fillRect(currentPos.x + offset.x, 
+                  currentPos.y + offset.y, 1, 1);
+    }
+  }, 25);
+  trackDrag(function(event) {
+    currentPos = relativePos(event, cx.canvas);
+  }, function() {
+    clearInterval(spray);
+  });
+};
+
+/************************************************************************
+ * exercises
+ ***********************************************************************/
+
+/**
+ * allows the user to click and drag out a rectangle on the canvas
+ *
+ * @param {Object} event - mousedown event (specifically left button)
+ * @param {Object} cx - the canvas 2d context object
+ */
+tools.Rectangle = function(event, cx) {
+  var leftX, rightX, topY, bottomY
+  var clientX = event.clientX,
+      clientY = event.clientY;
+  
+  // placeholder rectangle
+  var placeholder = elt('div', {class: 'placeholder'});
+  
+  // cache the relative position of mouse x and y on canvas
+  var initialPos = relativePos(event, cx.canvas);
+  
+  // used for determining correct placeholder position
+  var xOffset = clientX - initialPos.x,
+      yOffset = clientY - initialPos.y;
+  
+  trackDrag(function(event) {
+    document.body.appendChild(placeholder);
+    
+    var currentPos = relativePos(event, cx.canvas);
+    var startX = initialPos.x,
+        startY = initialPos.y;
+        
+    // assign leftX, rightX, topY and bottomY
+    if (startX < currentPos.x) {
+      leftX = startX;
+      rightX = currentPos.x;
+    } else {
+      leftX = currentPos.x;
+      rightX = startX;
+    }
+
+    if (startY < currentPos.y) {
+      topY = startY;
+      bottomY = currentPos.y;
+    } else {
+      topY = currentPos.y;
+      bottomY = startY;
+    }
+  
+    // set the style to reflect current fill
+    placeholder.style.background = cx.fillStyle;
+    
+    // set div.style.left to leftX, width to rightX - leftX
+    placeholder.style.left = leftX + xOffset + 'px';
+    placeholder.style.top = topY + yOffset + 'px';
+    placeholder.style.width = rightX - leftX + 'px';
+    placeholder.style.height = bottomY - topY + 'px';   
+  }, function() {
+    
+    // add rectangle to canvas with leftX, rightX, topY and bottomY
+    cx.fillRect(leftX, topY, rightX - leftX, bottomY - topY);
+    
+    // destroy placeholder
+    document.body.removeChild(placeholder);
+  });
+};
+
+/**
+ * allows the user to load the color of a specific pixel
+ *
+ * @param {Object} event - mousedown event (specifically left button)
+ * @param {Object} cx - the canvas 2d context object
+ */
+// TODO: rewrite with pixel object
+tools['Pick Color'] = function(event, cx) {
+  try {
+    var colorPos = relativePos(event, cx.canvas),
+        // returns an array [r, g, b, opacity];
+        imageData = cx.getImageData(colorPos.x, colorPos.y, 1, 1),
+        colorVals = imageData.data,
+        color = '';
+    
+    // build the color
+    color += 'rgb(';
+    
+    // only need first three args
+    for (var i = 0; i < colorVals.length - 1; i++) {
+      color += colorVals[i];
+      
+      // only need two commas
+      if (i < 2)
+        color += ',';
+    }
+    color += ')';
+    
+    cx.fillStyle = color;
+    cx.strokeStyle = color;
+    
+  } catch(e) {
+    if (e instanceof SecurityError)
+        alert('Whoops! Looks like you don\'t have permission to do that!');
+      else
+        throw e;
+  }
+};
+
+// helpers for flood fill
+
+// iterates over N, S, E and W neighbors and performs a function fn
+function forEachNeighbor(point, fn) {
+  fn({x: point.x - 1, y: point.y});
+  fn({x: point.x + 1, y: point.y});
+  fn({x: point.x, y: point.y - 1});
+  fn({x: point.x, y: point.y + 1});
+}
+
+// checks if 2 points in data, point1 and point2, have the same color
+function isSameColor(data, point1, point2) {
+  var offset1 = (point1.x + point1.y * data.width) * 4;
+  var offset2 = (point2.x + point2.y * data.width) * 4;
+  
+  for (var i = 0; i < 4; i++) {
+    if (data.data[offset1 + i] != data.data[offset2 + i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// end flood fill helpers
+
+// NOTE: in my first attempt, I was creating Pixel objects and pushing them
+// to isPainted instead of Booleans; that wasn't a great idea...
+// I suspect there was too much initialization for the browser to handle
+// and it choked fatally :(
+
+// I think I would still like to see this done with a Pixel object, if not
+// merely for the ability to extend it to done some more advanced things
+
+/**
+ * paints all adjacent matching pixels
+ */
+tools["Flood Fill"] = function(event, cx) {
+  var imageData = cx.getImageData(0, 0, cx.canvas.width, cx.canvas.height),
+      // get sample point at current position, {x: int, y: int}
+        sample = relativePos(event, cx.canvas),
+      isPainted = new Array(imageData.width * imageData.height),
+      toPaint = [sample];
+  
+  // while toPaint.length > 0
+  while(toPaint.length) {
+    // current point to check
+    var current = toPaint.pop(),
+        id = current.x + current.y * imageData.width;
+    
+    // check if current has already been painted
+    if (isPainted[id]) continue;
+    else {
+      
+      // if it hasn't, paint current and set isPainted to true
+      cx.fillRect(current.x, current.y, 1, 1);
+      isPainted[id] = true;
+    }
+    
+    // for every neighbor (new function)
+    forEachNeighbor(current, function(neighbor) {
+      if (neighbor.x >= 0 && neighbor.x < imageData.width &&
+          neighbor.y >= 0 && neighbor.y < imageData.height &&
+          isSameColor(imageData, sample, neighbor)) {
+        toPaint.push(neighbor);
+      }
+    });
+  }
+};
+
+// initialize the app
+var appDiv = document.querySelector('#paint-app');
+createPaint(appDiv);
+
+//  placeholder for url input box
+$('input[type = text]').attr('placeholder', 'Enter URL');
+
+
+document.onload = setTimeout(function () { alert('If viewing on laptop, please zoom out until content fits the phone. \nThis is usually around "67%" '); }, 1000)
+document.onload = setTimeout(function () { alert('Also try entering URLs of Images in the Input Box and load them onto the canvas'); }, 2000);
+</script>
+</body>
+</html>
+
+
+
+  <!--Text to speeach
+       Large text
+       High Contrast--> 

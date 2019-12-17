@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reminder Page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="Disney App.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+
+    /***********************************************
+
+    * JavaScript Alarm Clock
+    ***********************************************/
+
+var jsalarm={
+  padfield:function(f){
+    return (f<10)? "0"+f : f
+  },
+  showcurrenttime:function(){
+    var dateobj=new Date()
+    var ct=this.padfield(dateobj.getHours())+":"+this.padfield(dateobj.getMinutes())+":"+this.padfield(dateobj.getSeconds())
+    this.ctref.innerHTML=ct
+    this.ctref.setAttribute("title", ct)
+    if (typeof this.hourwake!="undefined"){ //if alarm is set
+      if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
+        clearInterval(jsalarm.timer)
+        /*window.location=document.getElementById("musicloc").value*/ /*This opens up the link*/
+        alert("Here's your reminder\nYour time is up!")
+      }
+    }
+  },
+  init:function(){
+    var dateobj=new Date()
+    this.ctref=document.getElementById("jsalarm_ct")
+    this.submitref=document.getElementById("submitbutton")
+    this.submitref.onclick=function(){
+      jsalarm.setalarm()
+      this.value="Alarm Set"
+      alert("Your reminder has been set!")
+      this.disabled=true
+      return false
+    }
+    this.resetref=document.getElementById("resetbutton")
+    this.resetref.onclick=function(){
+    jsalarm.submitref.disabled=false
+    jsalarm.hourwake=undefined
+    jsalarm.hourselect.disabled=false
+    jsalarm.minuteselect.disabled=false
+    jsalarm.secondselect.disabled=false
+    return false
+    }
+    var selections=document.getElementsByTagName("select")
+    this.hourselect=selections[0]
+    this.minuteselect=selections[1]
+    this.secondselect=selections[2]
+    for (var i=0; i<60; i++){
+      if (i<24) //If still within range of hours field: 0-23
+      this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i)
+      this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i)
+      this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i)
+
+    }
+    jsalarm.showcurrenttime()
+    jsalarm.timer=setInterval(function(){jsalarm.showcurrenttime()}, 1000)
+  },
+  setalarm:function(){
+    this.hourwake=this.hourselect.options[this.hourselect.selectedIndex].value
+    this.minutewake=this.minuteselect.options[this.minuteselect.selectedIndex].value
+    this.secondwake=this.secondselect.options[this.secondselect.selectedIndex].value
+    this.hourselect.disabled=true
+    this.minuteselect.disabled=true
+    this.secondselect.disabled=true
+  }
+}
+
+</script>
+    <!--##############################################**CSS Starts Here####################################-->
+    <style type  = "text/css">
+            /*#######################################Container for the phone#######################*/
+            .container{
+
+              margin-right: auto; /* 1 */
+              margin-left:  auto; /* 1 */
+              max-width: 324px; /* 2 */
+              padding-right: 20%; /* 3 */
+              padding-left:  20.5%; /* 3 */
+              padding-top:  9%;
+            }
+            
+            .dropbtn {
+                background-color: lightgreen;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .li2 a {
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;   
+                margin-left: -0.2px; 
+            }
+
+            .fa{
+              font-size:28px; 
+              color:black;
+            }
+            
+            .we1:hover {
+              background-color:#c63d3d;          
+            }
+            .we2:hover {
+              background-color:#c6c13d;          
+            }
+            .we3:hover {
+              background-color:#3dc653;          
+            }
+            .we4:hover {
+              background-color:#3d78c6;          
+            }
+            .we5:hover {
+              background-color:#5d1e60;          
+            }
+
+            .li2:hover .fa{
+              color:white;             
+            }
+
+            .li2:hover b{
+              color:white;             
+            }            
+            
+
+          .nav2 {
+                
+                background-color: white;
+                opacity: 0.9;
+                margin-top:-50px;
+                margin-right: 2px;
+              
+            }
+            .li2{
+                font-size: 10.5px;
+                margin-right: 5px;                
+            }
+
+            
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: green;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f1f1f1;
+                min-width: 160px;
+                overflow: auto;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown a:hover {background-color: #ddd}
+
+            .show {display:block;}
+
+            .icon{
+                width: 15px;
+                height: 2px;
+                background-color: black;
+                margin: 3px 0;
+
+            }
+
+            .img1{
+                max-width: 80px;
+                margin-left:228px !important;
+                margin-top:-57px !important;
+                position:absolute;
+
+                
+            }
+
+            .nColor{
+                background:#3dc653;
+            }
+
+            body{
+                background-image: url("Images/Iphone template.png");
+                background-repeat: no-repeat;               
+                background-size: 900px 900px;
+                background-position: 30px -70px;
+
+            }
+
+            @media only screen and (min-width: 1240px) {
+                body{
+                    background-image: url("Images/Iphone template.png");
+                    background-repeat: no-repeat;               
+                    background-size: 900px 900px;
+                    background-position: 50.5% -10%;
+
+                }
+            }
+
+
+            /*Menu starts here*/
+            .MenuImg{
+                width:25px;
+                filter: invert(30%) grayscale(100%) brightness(70%) contrast(10);
+                position:relative;
+                top:7px;
+               
+            }
+
+            .MenuImg1{
+                width:50px;
+                margin-right: -24px;
+                position: relative;
+                right:15px;
+                filter: invert(30%) grayscale(100%) brightness(70%) contrast(10);
+                position:relative;
+                top:7px;
+    
+            }
+
+            .MenuImg2{
+                width:25px;
+                position:relative;
+                top:7px;
+            }
+
+            .about1{
+                text-align: center;
+
+            }
+            
+            .d1{
+                position: relative;
+                margin-top:-10px;
+            }
+
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 9px;
+              height: 12px;
+            }
+
+            .switch input {display:none;}
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 10px;
+              width: 10px;
+              left: 1px;
+              bottom: 1px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+              box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+              -webkit-transform: translateX(13px);
+              -ms-transform: translateX(13px);
+              transform: translateX(13px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 17px;
+            }
+
+            .slider.round:before {
+              border-radius: 50%;
+            }  
+
+            /*  Alarm*/
+
+            #jsalarmclock{
+            font-family: Tahoma;
+            font-weight: bold;
+            font-size: 16px;
+            }
+
+            #jsalarmclock div{
+            margin-bottom: 1em;
+            }
+
+            #jsalarmclock div.leftcolumn{
+            float: left !important;
+            font-size: 16px;            
+            }
+
+            .leftcolumn{
+              margin-left: 20px; 
+            }
+
+            #toptext{
+              font-family: Tahoma;
+              font-weight: bold;
+              font-size: 16px;              
+              margin-bottom: 0px;
+              position: absolute;
+              color: white;
+              text-align: center;
+              margin-left:105px;
+            }
+
+            .remSection{
+              background-color: #4C6F52;
+              position: relative;
+              top:-35px;
+              margin-right: 1px; 
+            }          
+
+            /*Buttons*/
+            input[type=submit],input[type=reset]  {
+              background-color:  #008CBA;
+              border-radius: 12px;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 13px;
+              margin: 8px 4px;
+              -webkit-transition-duration: 0.4s; /* Safari */
+              transition-duration: 0.4s;
+              cursor:pointer;
+              position: relative;
+              top:-10px;
+            }
+
+            input[type=submit]:hover,input[type=reset]:hover  {
+              background-color: #4CAF50; /* Green */
+              color: white;
+            }
+
+            input[type=button]:hover {
+                background-color:rgba(255,204,0,0.8);
+            }        
+
+    </style>
+
+</head>
+<body>    
+  <div class = "container">
+
+             <a href = "Disney App.html"><span >&#10094; <small>Home</small></span></a>
+
+             <br />
+
+
+            <div class="w3-card-4 w3-margin w3-white" style='color:rgb(102, 37, 42)'>
+                
+                <h5 id='h5' style = "text-align: center">Scheduled Events<span class="w3-opacity"><br />February 25, 2018</span></h5>
+            </div>
+
+            <div class = "nColor">
+                <div class="dropdown">                
+                <button onclick="myFunction()" class="dropbtn"><div class = "icon"></div><div class = "icon"></div><div class = "icon"></div></button>
+                  <div id="myDropdown" class="dropdown-content">
+
+                    <!--The text the says "Off" should change based on the toggle-->
+                   Darkmode <span>Off</span>     
+                  <label class="switch">
+                     <input type="checkbox">                          
+                    <span class="slider round"></span>
+                  </label>          
+              
+
+
+                    <a href = "#language"><img src = "Images/English.png" alt = "English" class = "MenuImg2">English</a>
+                    <a href="#Account" class = "d1"><img src = "Images/Account.png" alt = "Account" class = "MenuImg">My Account</a>
+                    <a href="#Tickets" class = "d1"><img src = "Images/Ticket.png" alt = "Tickets" class = "MenuImg">Ticket</a>
+                    <a href="#Reminders" class = "d1"><img src = "Images/Reminders.png" alt = "Reminders" class = "MenuImg">Reminders</a>
+                    <a href="#Merchandise" class = "d1"><img src = "Images/Merchandise.png" alt = "Merchandise" class = "MenuImg">Merchandise</a>
+                    <a href="#Food" class = "d1"><img src = "Images/Food.png" alt = "Food" class = "MenuImg">Food</a>
+                    <a href="#Text-To-Speech" class = "d1"><img src = "Images/Text-To-Speech.png" alt = "Text-To-Speech" class = "MenuImg1">Text-To-Speech</a>
+                    <a href="#Voice-To-Text" class = "d1"><img src = "Images/Voice-To-Text.png" alt = "Voice-To-Text" class = "MenuImg">Voice-To-Text/Translator</a>
+                    <a href="#about" class = "about1">About Us</a>                   
+                  </div>
+                  <b style = "margin-left: 35px">Important Reminders</b>
+                  <img src = "Images/Disney Logo.png" alt = "Disney World Logo" class = "img1">
+                
+                </div>
+            </div>  
+
+            <div id = "toptext">Current Time</div>
+            <!--##############################  Analog Clock  #####################################-->
+            <canvas id="canvas" width="150" height="150"
+            style="background-color:#333; padding-right: 88px;padding-left: 85px;padding-bottom: 35px;padding-top: 25px;">
+            </canvas>        
+                                           
+            <!--##############################  Time/Alarm  #####################################-->
+            <form action="" method="">
+              <div id="jsalarmclock">
+
+                <div>
+                  
+                  <div class="leftcolumn"></div> <span id="jsalarm_ct" style="letter-spacing: 2px; position: relative; top:-35px; margin-left: 96px;"></span>
+                </div>
+                <div class = "remSection" style="margin-right: 2px">
+                  <div class="leftcolumn" style="color: white; opacity: 0.9;"">Set Reminder:</div><div style="padding-right: 88px;padding-left: 88px;"><br><br> <span><select></select> Hours</span><br>  <span><select></select> Minutes</span>  <span><select></select> Seconds</span></div>
+
+                  <!--Buttons-->
+                <input type="submit" value="Set Alarm!" id="submitbutton" style="margin-left: 20px" />
+                <input type="reset" value="Reset" id="resetbutton" />
+                </div>
+                <!--This bit is currently invisible but is important as it holds the link to the map-->
+                <div style="display: none;">
+                  <div class="leftcolumn">Set Alarm Action:</div>
+                  <input type="text" id="musicloc" size="55" value="http://www.disneylandparis.co.uk/attractions/map/" /> <span style="font: normal 11px Tahoma">*Location of page to launch</span>
+                </div> 
+              </div>
+            </form>
+
+
+            <!--##############################Bottom Navigation  Bar#####################################-->
+            <ul class='nav2'>
+                <li class='li2 we1' style="margin-right: -2px">
+                    <a href="MainApp.html"><i class="fa fa-home"></i><br /><b>Home</b></a>
+                </li>
+                <li class='li2 we2' style="margin-right: -2px">
+                   <a href="RidesPage.html"><i class="fa fa-rocket"></i><br /><b>Rides</b></a>
+                </li>
+                <li class='li2 we3' style="margin-right: -2px">
+                    <a href="ReminderPage.html"><i class="  fa fa-history"></i><br /><b>Reminder</b></a>
+                </li>
+
+
+                <li class='li2 we4' style="margin-right: -2px">
+                    <a href="MessagesPage.html"><i class="  fa fa-commenting-o"></i><br /><b>Messages</b></a>
+                </li>
+
+
+                <li class='li2 we5' style="margin-right: -2px">
+                    <a href="MapPage.html"><i class="fa fa-map-marker"></i><br /><section><b>Map</b></section></a>
+                </li>
+            </ul>   
+    </div>   
+   
+
+
+<script type="text/javascript">
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+/*alarm*/
+jsalarm.init()
+
+/*Analog Clock*/
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+
+document.onload = setTimeout(function () { alert('Try setting a reminder with time a few seconds \nfrom the current time'); }, 1000);
+</script>
+
+</body>
+</html>
+
+
+
+  <!--Text to speeach
+       Large text
+       High Contrast--> 

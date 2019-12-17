@@ -1,0 +1,594 @@
+<!--Disney world needs an ID in the html so that you can use java script to add effects and stuff
+line 195 for reload-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HomePage</title>
+    <link href="Disney App.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <table id='tools'>
+                <tr>
+                    <td><img id='data' src='http://www.rogers.com/cms/common/css/img/widget-loader-lg.gif' width='30'> <img id='wify' src='http://www.freeiconspng.com/uploads/blue-wifi-icon-3.png' width='20'></td>
+                    <td id='time'></td>
+                    <td><img src='http://www.screencastsonline.com/public_images/01-new/SCOI0062-summary-icon-100x100.png' width='30'></td>
+                </tr>
+            </table><br>
+        </div>
+        <div class='home'>
+            <div id='home_page'>
+                <table class='content'>
+                    <tr>
+                        <td><img onclick='setting()' src='http://cdn.churchm.ag/wp-content/uploads/2015/09/Apple-Settings-Logo-Icon-180x180.png' width='50'><br>
+                        Setting</td>
+                        <td><img onclick='appstore()' src='https://vrworld.com/wp-content/uploads/2010/12/Mac-App-Store-icon.png' width='50'><br>
+                        Appstore</td>
+                        <td><img id="triller" src='https://images-na.ssl-images-amazon.com/images/I/61Wt8dtnmxL.png' width='50'><br>
+                        Triller</td>
+                        <td><img id='fb' src='http://blog.addthiscdn.com/wp-content/uploads/2015/11/logo-facebook.png' width='50'><br>
+                        Facebook</td>
+                    </tr>
+                    <tr>
+                        <td><img id='maps' src='http://icons.iconarchive.com/icons/scafer31000/bubble-circle-3/1024/Maps-icon.png' width='50'><br>
+                        Maps</td>
+                        <td><img id='insta' src='https://instagram-brand.com/wp-content/themes/ig-branding/assets/images/ig-logo-email.png' width='50'><br>
+                        Instagram</td>
+                        <td><img id="myBtn" onclick='photo()' src='http://jimmymacsupport.com/wp-content/uploads/2015/04/Photos-icon.png' width='50'><br>
+                        Photos</td>
+                        <td><img id="weather" src='http://myfreeweather.com/assets/weatherlogo.png' width='50'><br>
+                        Weather</td>
+                    </tr>
+                    <tr>
+                        <td><img onclick='news()' src='http://www.iconarchive.com/download/i78146/igh0zt/ios7-style-metro-ui/MetroUI-Apps-Windows8-News.ico' width='50'><br>
+                        Apple News</td>
+                        <td id = "disney"><img src='https://vignette.wikia.nocookie.net/logopedia/images/7/7a/Walt_Disney_Pictures_Castle_Logo.png/revision/latest?cb=20150429165843' width='50'><br>
+                        Disney World</td>
+                    </tr>
+                </table>
+                <ul class='nav'>
+                    <li class='li' id='search'><img src='http://downloadicons.net/sites/default/files/search-icon-6351.png' width='35'><br>
+                    Search</li>
+                    <li class='li'><img id='1' src='http://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/256/MetroUI-Other-Phone-icon.png' width='35'><br>
+                    Phone</li>
+                    <li class='li'><img id='2' src='https://lh3.googleusercontent.com/-E-jAfuwURMbYgvRhS8xLL8p280U9ueeC-IDrJOFmxGZpBJCWOY4jTbOKK1DZkPIFAUu=w300' width='35'><br>
+                    Music</li>
+                    <li class='li' id="safari"><img id='3' src='https://www.macupdate.com/images/icons256/15675.png' width='35'><br>
+                    Safari</li>
+                    <li class='li' id = "camera"><img id='4' onclick='camera()' src='https://photoapps.expert/sites/default/files/sitegraphics/app_icons/ios_8_camera-512.png' width='35'><br>
+                    Camera</li>
+                </ul>
+            </div>
+        </div>
+        <div class='modal'>
+            <div class='header'>
+                <span onclick='home()'>&#10094; <small>Home</small></span><br>
+                <div class='search'>
+                    <input placeholder='search' type='text'>
+                </div>
+            </div>
+            <div class=' content'>
+                <div class='airplane'>
+                    <img id='airplane' src='https://apk-dl.com/detail/image/com.floriandraschbacher.airplanemode.pro-w200.png' width='25'><label>Airplane Mode</label>
+                    <div class='switch'><img id='img' onclick='slideButton()' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/2000px-Circle_-_black_simple.svg.png' style='padding-left:5%' width='25'></div>
+                    <div class='wifi'>
+                        <img id='wifi' src='http://www.iconarchive.com/download/i104453/custom-icon-design/flatastic-11/Wifi-2.ico' width='25'><label>Wifi</label>
+                        <div class='arrow'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='map'>
+            <span id='home_map'>&#10094; <small>Home</small></span><br>
+            <button class='button' onclick="getLocation()">Locate</button>
+            <h1>Coordinates</h1>
+            <p id="coords"></p>
+            <div id="map" style="width:100%;height:80%"></div>
+            <script src="https://maps.googleapis.com/maps/api/js?callback=myMap">
+            </script>
+        </div>
+        <div class='apple_news'>
+            <span onclick='home_news()'>&#10094; <small>Home</small></span>
+            <ul class='nav2'>
+                <li class='li2'>
+                    <a href="#home">Home</a>
+                </li>
+                <li class='li2'>
+                    <a href="#news">News</a>
+                </li>
+                <li class='li2'>
+                    <a href="#contact">Contact</a>
+                </li>
+                <li class='li2'>
+                    <a href="#about">About</a>
+                </li>
+            </ul>
+            <div class="w3-card-4 w3-margin w3-white" style='color:rgb(102, 37, 42)'>
+                <h3 id='h3'><b>Apple News</b></h3>
+                <h5 id='h5'>Title description, <span class="w3-opacity">December 22, 2016</span></h5>
+            </div>
+            <div class="w3-container" style='color:rgb(102, 37, 42)'>
+                <img class='news' src='http://georgia.travel/uploads/2015/01/bg1small-1.jpg'>
+                <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                <hr>
+                <p><button class="read_more"><b>READ MORE »</b></button></p>
+            </div>
+        </div>
+        <div class='apple_music'>
+            <span id='music_apple'>&#10094; <small>Home</small></span><br>
+            <div class='controls'>
+            <div class='image' style='width:70%;height:55%;margin-left:15%;margin-bottom:0'><br>
+            <img id='image' src='http://data.whicdn.com/images/195009597/large.jpg' width='65%'></div><br>
+            <div>
+                <label id='name'>Music</label><br>
+                <small><label id='artist' style='color:red'></label></small>
+            </div><br>
+            <audio id="myaudio">HTML5 audio not supported</audio> <img id='next' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTptOs02szcrp6lx01Zk8ihoaJE04gIHUbbhNlsp6cNy_qlPMLD' width='10%'> <img id="play" src='https://cdn1.iconfinder.com/data/icons/glyphie-1/40/button_play_triangle_music_video_audio_arrow_next-512.png' width='10%'> <img id='previous' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTptOs02szcrp6lx01Zk8ihoaJE04gIHUbbhNlsp6cNy_qlPMLD' width='10%'></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+
+
+
+
+
+    var num =0;
+
+     function slideButton(){
+         
+         
+       var img = document.getElementById('img');
+        var theSwitch = document.getElementsByClassName('switch')[0];
+        var wify = document.getElementById('wify');
+         var date = document.getElementById('data');
+         
+       if(num === 0){
+           
+          img.src='http://www.iconsdb.com/icons/download/white/circle-512.png'; 
+          img.style.transition = ' padding 1s';
+          theSwitch.style.background='#35cc4e';
+          theSwitch.style.border ='1px solid white'; 
+          img.style.paddingLeft='60%';
+          wify.src='http://www.free-icons-download.net/images/airplane-mode-on-icon-61147.png';
+          data.style.visibility='hidden';
+          
+          
+          
+          
+          
+          num++;
+          
+       }
+       
+        else if(num == 1){
+       
+       img.style.transition = ' padding 1s';
+       theSwitch.style.background='#f7faff';
+       img.style.paddingLeft='5%';
+       theSwitch.style.border ='1px solid #C0C0C0'; 
+       img.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/2000px-Circle_-_black_simple.svg.png';
+       data.style.visibility='visible';
+       wify.src='http://www.freeiconspng.com/uploads/blue-wifi-icon-3.png';
+      
+           
+          num=0; 
+       }
+       
+    }
+
+
+
+    //Setting
+
+    function home(){
+
+       
+       var modal = document.getElementsByClassName('modal')[0];
+       modal.style.display='none';
+       var home = document.getElementsByClassName('home')[0];
+       home.style.display='block';   
+       document.body.style.background = "grey";   
+       document.body.style.backgroundSize ='100% 100%';
+
+
+    }
+
+
+    function setting(){
+       
+       
+       var modal = document.getElementsByClassName('modal')[0];
+        modal.style.display='block';
+        var home = document.getElementsByClassName('home')[0];
+        home.style.display='none';
+        modal.style.background='white';
+        document.body.style.background='white';
+        modal.style.marginTop='0';
+        
+    }
+
+
+    //setting end
+
+
+
+
+    //Maps
+    var x = document.getElementById("coords");
+
+    function getLocation() {
+       if (navigator.geolocation) {
+           navigator.geolocation.getCurrentPosition(showPosition, showError);
+       } else { 
+           x.innerHTML = "Geolocation is not supported by this browser.";
+       }
+    }
+
+    function showPosition(position) {
+       var x = document.getElementById("coords"); 
+       x.innerHTML = "Latitude: " + position.coords.latitude + 
+       "<br>Longitude: " + position.coords.longitude;
+       var mapCanvas = document.getElementById("map");
+     var mapOptions = {
+       center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+       zoom:18,
+       mapTypeId:google.maps.MapTypeId.HYBRID
+     };
+     var map = new google.maps.Map(mapCanvas,mapOptions);
+    }
+
+    function showError(error) {
+       switch(error.code) {
+           case error.PERMISSION_DENIED:
+               x.innerHTML = "User denied the request for Geolocation.";
+               break;
+           case error.POSITION_UNAVAILABLE:
+               x.innerHTML = "Location information is unavailable.";
+               break;
+           case error.TIMEOUT:
+               x.innerHTML = "The request to get user location timed out.";
+               break;
+           case error.UNKNOWN_ERROR:
+               x.innerHTML = "An unknown error occurred.";
+               break;
+       }
+
+
+    }
+
+    function map(){
+       
+       
+       var map = document.getElementsByClassName('map')[0];
+        map.style.display='block';
+        map.style.background='white';
+        document.body.style.background='white';
+        map.style.marginTop='0';
+        var home = document.getElementsByClassName('home')[0];
+        home.style.display='none';
+
+       
+    }
+
+
+    function home_Map(){
+
+       
+       var map = document.getElementsByClassName('map')[0];
+        map.style.display='none';
+        var home = document.getElementsByClassName('home')[0];
+        home.style.display='block';
+        document.body.style.background = "grey";
+       document.body.style.backgroundSize ='100% 100%';
+
+    }
+     
+
+
+    //end maps
+
+
+
+
+    //apple news
+
+
+    function news(){
+       
+       
+       var appleNews = document.getElementsByClassName('apple_news')[0];
+        appleNews.style.display='block';
+        appleNews.style.background='white';
+        document.body.style.background='white';
+        appleNews.style.marginTop='0';
+        var home = document.getElementsByClassName('home')[0];
+        home.style.display='none';
+
+       
+    }
+
+
+    function home_news(){
+       
+       
+       var appleNews = document.getElementsByClassName('apple_news')[0];
+        appleNews.style.display='none';
+        appleNews.style.background='white';
+        document.body.style.background='grey';
+        appleNews.style.marginTop='0';
+        var home = document.getElementsByClassName('home')[0];
+        home.style.display='block'; 
+        document.body.style.backgroundImage    
+         document.body.style.backgroundSize ='100% 100%';
+
+       
+    }
+
+
+
+
+
+
+
+
+
+    $(function(){
+       
+        
+        var home = document.getElementsByClassName('home')[0];
+       
+       
+       
+       
+       //time
+       setInterval(function(){
+           
+       var d = new Date();
+       var hours = d.getHours();
+       var mins = d.getMinutes();
+       var secs = d.getSeconds();
+       
+       mins = ((mins<10) ?  '0'+mins : mins);
+       
+       document.getElementById('time').innerHTML = hours+":"+mins;
+       
+       },1000);
+       
+       //end
+       
+      //fb
+      
+      $('#fb').click(function(){
+          
+         window.open("https://www.facebook.com");
+          
+      });
+      
+      
+      
+      //end
+      
+      
+      //instagram
+      $('#insta').click(function(){
+         
+         window.open("https://www.instagram.com");
+          
+      });
+
+      //weather
+       $('#weather').click(function(){
+         
+         window.open("https://www.bbc.co.uk/weather");
+          
+      });
+
+       //triller or music website
+       $('#triller').click(function(){
+         
+         window.open("https://www.spotify.com/uk/");
+          
+      });
+
+       //disney
+       $('#disney').click(function(){
+         
+         window.open("MainApp.html", "_self");
+          
+      });
+
+       //search
+       $('#search').click(function(){
+         
+         window.open("https://www.google.co.uk");
+          
+      });
+
+       //safari
+       $('#safari').click(function(){
+         
+         window.open("https://www.google.co.uk");
+          
+      });
+      //end
+      
+       //Maps
+       var map = document.getElementsByClassName('map')[0];
+       
+       $('#maps').click(function(){
+           
+        map.style.display='block';
+        map.style.background='white';
+        document.body.style.background='grey';
+        map.style.marginTop='0';
+        
+        home.style.display='none';
+           
+           
+           
+           
+           
+       });
+       
+       
+       $('#home_map').click(function(){
+          
+         map.style.display='none';
+         home.style.display='block';     
+         document.body.style.backgroundSize ='100% 100%';
+          
+           
+       });
+       
+       //end
+       
+       
+       
+       //Musics
+       
+        var music = document.getElementsByClassName('apple_music')[0];
+        
+       
+       $('#music_apple').click(function(){
+          
+        
+        music.style.display='none';
+        music.style.background='white';
+        document.body.style.background='grey';
+        music.style.marginTop='0';
+        home.style.display='block';
+         document.body.style.backgroundSize ='100% 100%';
+          
+           
+       });
+       
+       
+       
+       $('#2').click(function(){
+          
+          
+        music.style.display='block';
+        music.style.background='white';
+        document.body.style.background='white';
+        music.style.marginTop='0';
+        home.style.display='none';
+       
+           
+       });
+       
+       
+
+       
+       //end
+       
+
+      var currentFile = ['http://www.sololearn.com/uploads/audio.mp3','http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4','http://www.w3schools.com/html/horse.ogg','http://apm.ircam.fr/media/resources/audio/StreicherKreis_BASCHET_extract.ogg','http://www.elated.com/res/File/articles/authoring/html/html5-audio/WhiteChristmas.mp3','https://archive.org/download/mythium/JLS_ATI.mp3','https://archive.org/download/mythium/SSB06_06_03_ME.mp3','https://archive.org/download/mythium/BSFM_TF.mp3'];
+
+      var images = ['http://www.teamjimmyjoe.com/wp-content/uploads/2013/07/Worst-Album-Covers-Eddie-Mack.jpg','http://www.lovethispic.com/uploaded_images/254889-Fuzzy-Bunny.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0eCYiehhQILOaYhXIoMBhVrlZb9nttlm2yke64P0n7KnESXWa','https://i1.sndcdn.com/artworks-000174004108-fa1tfw-t500x500.jpg','http://www.imgion.com/images/01/naked-santa-baby.jpg','http://www.toonpool.com/user/111730/files/bruce_willis_2357425.jpg','http://www.mommyish.com/wp-content/uploads/2014/04/shutterstock_87949297.jpg','https://userscontent2.emaze.com/images/76be6f65-d4f6-464f-911d-ea12270836e8/19bf4b49ccb941fa06e11292e6a4abeb.jpg'];
+
+      var names =['Symphony No. 9','Death Becomes Fur ','Neigh','Violins Harambe','Christmas','Action No.102','Madd!!','Before rock'];
+      var artists =['Ludwig van Beethoven','Bucky Bunny','Bojack Horseman ','Harambe','Naked Santa','Bad Bruce','Bad Baby','evolution'];
+
+      var num = 0;
+      
+      $('#play').click(function(){
+         
+                       var oAudio = document.getElementById('myaudio');
+                       var btn = document.getElementById('play'); 
+                       var name = document.getElementById('name');
+                       var artist = document.getElementById('artist');
+                        
+
+                       // Tests the paused attribute and set state. 
+                       if (oAudio.paused) {
+                          oAudio .src = currentFile[num]; 
+                          image.src = images[num];
+                          name.innerHTML = names[num];
+                          artist.innerHTML=artists[num];
+                          
+                           oAudio.play();
+                            btn.src='http://www.freeiconspng.com/uploads/pause-button-png-11.png';
+                            image.style.transition='width .65s ';
+                           image.style.width='65%';
+                           image.style.boxShadow= '10px 10px 5px #888888 ';
+                            
+                       }
+                       
+                       else {
+                            oAudio.src = currentFile[num]; 
+                            image.src = images[num];
+                            name.innerHTML = names[num];
+                            artist.innerHTML=artists[num];
+                            
+                           oAudio.pause();
+                           btn.src='https://cdn1.iconfinder.com/data/icons/glyphie-1/40/button_play_triangle_music_video_audio_arrow_next-512.png';
+                           image.style.transition='width .65s ';
+                           image.style.width='55%';
+                            image.style.boxShadow= 'none ';
+                       }
+                       
+          
+      });
+      
+      
+      $('#previous').click(function(){
+          
+                          var image = document.getElementById('image');
+                          var oAudio = document.getElementById('myaudio');
+                           var name = document.getElementById('name');
+                          var artist = document.getElementById('artist');
+        
+                    num++;
+        
+                  if(num >= currentFile.length && images.length){
+                    num =0;
+                   }
+        
+                     oAudio.src = currentFile[num]; 
+                     image.src = images[num];
+                     name.innerHTML = names[num];
+                     artist.innerHTML=artists[num];
+                     oAudio.play();
+                   
+          
+      });
+      
+      
+      $('#next').click(function(){
+         
+                         var image = document.getElementById('image');
+        var oAudio = document.getElementById('myaudio');
+        var name = document.getElementById('name');
+        var artist = document.getElementById('artist');
+        
+        num--;
+        
+        if(num < 0) {
+          num = currentFile.length-1;  
+         num = images.length-1;
+         num = names.length-1;
+         num = artists.length-1;
+         
+        }
+        
+      oAudio.src = currentFile[num]; 
+      image.src = images[num];
+      name.innerHTML = names[num];
+      artist.innerHTML=artists[num];
+      
+       oAudio.play();  
+         
+          
+      });
+      
+       
+    });
+
+
+    </script>
+</body>
+</html>
